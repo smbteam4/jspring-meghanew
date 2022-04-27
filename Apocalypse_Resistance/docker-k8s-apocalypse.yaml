@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-k8s-apocalypse-deployment
+  labels:
+    app: docker-k8s-apocalypse
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app : docker-k8s-apocalypse
+  template:
+    metadata:
+      labels:
+        app: docker-k8s-apocalypse
+    spec:
+      containers:
+      - name: docker-k8s-apocalypse
+        image: techversant/apocalypse_resistance
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8080
